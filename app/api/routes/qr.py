@@ -68,11 +68,12 @@ async def detect_qr_scam(file: UploadFile = File(...)):
         if not qr_content:
             return ResponseFormatter.format_error_response("No QR code found in image")
 
-        # YOLO model prediction (if you have a visual model for scam QR)
+        # YOLO QR model lazy-load prediction
         def model_predict():
-            model = model_loader.get_model('qr')
+            model = model_loader.get_model('qr')  # ✅ Lazy-loaded now
             results = model(img)
             return any(box.cls.item() == 1 for r in results for box in r.boxes)
+
         is_scam_model = await asyncio.to_thread(model_predict)
         model_risk = 100 if is_scam_model else 0
 
@@ -95,6 +96,7 @@ async def detect_qr_scam(file: UploadFile = File(...)):
                 "image_analysis": groq_data.get("analysis", "")
             })
 
+        # fallback if Groq failed
         return ResponseFormatter.format_response({
             "is_scam": is_scam_model,
             "label": "SCAM" if is_scam_model else "LEGITIMATE",
