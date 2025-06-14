@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Scam Detection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <main>
+        <div class="card">
+            <h1>AI Scam Detection</h1>
+            <form id="scamForm" autocomplete="off">
+                <label for="queryInput" class="main-label">Link/Messages</label>
+                <input type="text" id="queryInput" placeholder="Enter your link or message here" autocomplete="off" class="main-input">
+                <div class="input-hint">Paste a suspicious link or message.</div>
+                <label for="fileInput" class="main-label" style="margin-top:18px;">Or Upload a File</label>
+                <input type="file" id="fileInput" class="file-input" accept="image/*, .txt, .pdf">
+                <div id="dropZone" class="drop-zone">
+                    <div class="drop-message">
+                        <svg width="36" height="36" fill="none" stroke="currentColor"><path d="M18 30V10M18 10l-7 7m7-7l7 7M5 25a13 13 0 0126 0v0a13 13 0 01-26 0v0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span>Click to upload or drag and drop</span>
+                        <div class="file-hint">Any file type (MAX. 10MB)<br>Upload a file to scan for threats</div>
+                    </div>
+                </div>
+                <button id="submitBtn" type="submit" class="analyze-btn">Analyze Now</button>
+            </form>
+            <div id="resultContainer"></div>
+        </div>
+    </main>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

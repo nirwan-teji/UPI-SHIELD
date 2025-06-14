@@ -1,0 +1,247 @@
+body {
+    background: #181a20;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #e5e7eb;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    background: linear-gradient(135deg, #23263a 60%, #1a1d2b 100%);
+    border-radius: 24px;
+    box-shadow: 0 8px 48px 0 rgba(40, 40, 80, 0.33);
+    padding: 48px 40px 36px 40px;
+    width: 100%;
+    max-width: 700px;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.card h1 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 36px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.main-label {
+    color: #a5b4fc;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+    margin-top: 12px;
+    display: block;
+}
+
+.main-input {
+    width: 100%;
+    background: #191c24;
+    border: 1.5px solid #23263a;
+    color: #e5e7eb;
+    border-radius: 12px;
+    padding: 20px 18px;
+    font-size: 1.18rem;
+    margin-bottom: 6px;
+    transition: border 0.2s;
+}
+
+.main-input:focus {
+    border: 1.5px solid #7f85f5;
+    outline: none;
+}
+
+.input-hint {
+    color: #b3b8d1;
+    font-size: 1em;
+    margin-bottom: 10px;
+    margin-left: 2px;
+}
+
+.file-input {
+    display: none; /* Hide default file input */
+}
+
+.drop-zone {
+    background: #191c24;
+    border: 2px dashed #7f85f5;
+    border-radius: 14px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 18px;
+    margin-top: 8px;
+    position: relative;
+    transition: border-color 0.18s, background 0.18s;
+    text-align: center;
+}
+
+.drop-zone.dragover {
+    border-color: #a78bfa;
+    background: #23263a;
+}
+
+.drop-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: #a5b4fc;
+    font-size: 1.13em;
+    pointer-events: none;
+    user-select: none;
+}
+
+.drop-message svg {
+    margin-bottom: 8px;
+    color: #7f85f5;
+}
+
+.file-hint {
+    color: #b3b8d1;
+    font-size: 0.97em;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+.analyze-btn {
+    width: 100%;
+    margin-top: 34px;
+    background: linear-gradient(90deg, #a78bfa 0%, #7f85f5 100%);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 22px 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(127,133,245,0.08);
+    transition: background 0.16s, box-shadow 0.16s;
+    letter-spacing: 1px;
+}
+
+.analyze-btn:hover {
+    background: linear-gradient(90deg, #7f85f5 0%, #a78bfa 100%);
+    box-shadow: 0 4px 18px rgba(127,133,245,0.13);
+}
+
+#resultContainer {
+    margin-top: 28px;
+}
+
+.result-card {
+    padding: 28px 24px;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(127, 133, 245, 0.25);
+    background: #1f2233;
+    border-left: 10px solid #7f85f5;
+    animation: fade-in 0.6s ease forwards;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-size: 1.16rem;
+    color: #e0e0ff;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.result-card.scam {
+    border-left-color: #ef4444;
+    background: linear-gradient(120deg, #331a1a 80%, #ef4444 120%);
+    box-shadow: 0 6px 24px rgba(239, 68, 68, 0.4);
+}
+
+.result-card.legit {
+    border-left-color: #22c55e;
+    background: linear-gradient(120deg, #1a3320 80%, #22c55e 120%);
+    box-shadow: 0 6px 24px rgba(34, 197, 94, 0.3);
+}
+
+.result-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 36px rgba(127, 133, 245, 0.6);
+}
+
+.result-card h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.result-card p {
+    margin: 8px 0;
+    line-height: 1.5;
+    font-size: 1.13rem;
+}
+
+.error {
+    margin-top: 22px;
+    padding: 18px;
+    background: #4b1e1e;
+    border-left: 6px solid #e53935;
+    color: #ffbcbc;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.12rem;
+}
+
+.loading {
+    margin-top: 22px;
+    padding: 18px;
+    background: #23263a;
+    border-left: 6px solid #7f85f5;
+    color: #b4b7fa;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.12rem;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    .card {
+        max-width: 99vw;
+        min-width: 0;
+        padding: 18px 2vw 18px 2vw;
+    }
+    .card h1 {
+        font-size: 1.4rem;
+    }
+    .result-card {
+        font-size: 1rem;
+    }
+}
+/* Add these to your existing CSS */
+.explanation {
+    margin-top: 1rem;
+    line-height: 1.6;
+    color: #e5e7eb;
+}
+
+.verified-badge {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(76, 175, 80, 0.15);
+    color: #4CAF50;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+/* Keep all your existing CSS as-is */

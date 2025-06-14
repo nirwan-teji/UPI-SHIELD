@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scam Detection Result</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ Scam Detection Result</h1>
+            <a href="/" class="back-link">← Analyze Another Message</a>
+        </header>
+        
+        <main>
+            <div class="result-container">
+                <div class="result-card {{ result_class }}">
+                    <div class="result-header">
+                        <h2>{{ label }}</h2>
+                        <div class="risk-score {{ risk_class }}">
+                            {{ risk_score }}%
+                        </div>
+                    </div>
+                    
+                    <div class="result-details">
+                        <div class="scam-type">
+                            <strong>Scam Type:</strong> {{ scam_type }}
+                        </div>
+                        
+                        <div class="explanation">
+                            <strong>Analysis:</strong>
+                            <p>{{ explanation }}</p>
+                        </div>
+                        
+                        <div class="recommendations">
+                            <h3>🔒 Security Recommendations:</h3>
+                            <ul>
+                                {% if label == "SCAM" %}
+                                    <li>❌ Do NOT click any links or scan QR codes</li>
+                                    <li>❌ Do NOT provide personal information</li>
+                                    <li>❌ Do NOT send money or make payments</li>
+                                    <li>🚨 Report this message to authorities</li>
+                                    <li>🗑️ Delete the message immediately</li>
+                                {% elif label == "SUSPICIOUS" %}
+                                    <li>⚠️ Verify the sender through official channels</li>
+                                    <li>⚠️ Do not act on urgent requests immediately</li>
+                                    <li>🔍 Check URLs carefully before clicking</li>
+                                    <li>💬 Ask someone you trust for advice</li>
+                                {% else %}
+                                    <li>✅ Message appears legitimate</li>
+                                    <li>🔍 Still verify important requests independently</li>
+                                    <li>🛡️ Stay vigilant for future messages</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        
+                        <div class="source">
+                            <small>Analysis Source: {{ source }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
