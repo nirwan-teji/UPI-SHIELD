@@ -23,7 +23,7 @@ class Settings:
 # New ModelConfig class
 
 class ModelConfig:
-    BASE_DIR = Path(__file__).resolve().parent.parent.parent/"scam-detection-bot"
+    BASE_DIR = Path(__file__).resolve().parent.parent
     URL_MODEL_PATH = BASE_DIR / "ml_models/trained_models/finbert_url/finbert_url_model.bin"
     URL_TOKENIZER_PATH = BASE_DIR / "ml_models/trained_models/finbert_url"
     INVESTMENT_MODEL_PATH = BASE_DIR / "ml_models/trained_models/finbert_investment/finbert_investment_model.bin"
